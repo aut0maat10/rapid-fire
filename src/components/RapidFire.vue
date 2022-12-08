@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Hello World</h1>
-    <component :is="data.type" />
+    <component :is="data.questions[0].type" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default defineComponent({
     };
   },
   components: {
-    standardquestion: StandardQuestion,
+    StandardQuestion,
   },
 });
 </script>

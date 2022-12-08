@@ -1,10 +1,10 @@
 {
  "questions": [
     {
-      "type": "standardquestion"
+      "type": "standard-question"
     },
     {
-      "type": "customquestion"
+      "type": "custom-question"
     }
   ]
 }
