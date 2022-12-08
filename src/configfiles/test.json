@@ -1,0 +1,10 @@
+{
+ "questions": [
+    {
+      "type": "standardquestion"
+    },
+    {
+      "type": "customquestion"
+    }
+  ]
+}

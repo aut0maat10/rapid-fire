@@ -1,15 +1,23 @@
 <template>
   <div>
     <h1>Hello World</h1>
+    <component :is="data.type" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import StandardQuestion from "./StandardQuestion.vue";
+import * as data from "../configfiles/test.json";
 
 export default defineComponent({
   setup() {
-    return {};
+    return {
+      data,
+    };
+  },
+  components: {
+    standardquestion: StandardQuestion,
   },
 });
 </script>
