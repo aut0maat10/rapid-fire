@@ -1,0 +1,10 @@
+[
+  {
+    "type": "standard-question",
+    "question": "Which bear is best?",
+    "options": ["black bear", "brown bear", "grizzly bear"]
+  },
+  {
+    "type": "custom-question"
+  }
+]
