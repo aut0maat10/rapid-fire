@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <h1>Hello World</h1>
+  <div class="rapid-fire">
     <component
-      :is="quizDataStore.quizData[0].type"
-      :quizData="quizDataStore.quizData[0]"
+      :is="quizDataStore.quizData[counterStore.count].type"
+      :quizData="quizDataStore.quizData[counterStore.count]"
+      v-model="answerObject"
       @submitAnswer="handleResult"
     />
   </div>
@@ -14,17 +14,20 @@ import { defineComponent } from "vue";
 import StandardQuestion from "./StandardQuestion.vue";
 import { useQuizDataStore } from "@/stores/QuizData";
 import { isCoreComponent } from "@vue/compiler-core";
+import { useCounterStore } from "../stores/counter";
 
 export default defineComponent({
   setup() {
     const quizDataStore = useQuizDataStore();
+    const counterStore = useCounterStore();
     return {
       quizDataStore,
+      counterStore,
     };
   },
   data() {
     return {
-      answers: [],
+      answerObject: {},
     };
   },
   components: {
@@ -32,8 +35,8 @@ export default defineComponent({
     isCoreComponent,
   },
   methods: {
-    handleResult(res) {
-      alert(res);
+    handleResult() {
+      alert("hi");
     },
   },
 });

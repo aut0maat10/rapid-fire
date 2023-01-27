@@ -5,6 +5,8 @@
     "options": ["black bear", "brown bear", "grizzly bear"]
   },
   {
-    "type": "custom-question"
+    "type": "standard-question",
+    "question": "what gives you the right?",
+    "options": ["yes", "no", "maybe"]
   }
 ]
