@@ -2,17 +2,20 @@
   <div class="base-component">
     <h2>{{ quizData?.question }}</h2>
     <div class="options-wrapper">
+      <h2>{{ answer }}</h2>
       <div v-for="(option, index) in quizData?.options" :key="index">
         <input
           type="radio"
           :id="option"
-          :value="{ question: quizData.question, answer: option, index: index }"
+          :value="{ option: option, index: index, question: quizData.question }"
           v-model="answer"
         />
         <label :for="option">{{ option }}</label>
       </div>
     </div>
-    <button class="next-question-button">Next Question</button>
+    <button @click="onSubmit" class="next-question-button">
+      Next Question
+    </button>
   </div>
 </template>
 
@@ -22,17 +25,27 @@ import { useCounterStore } from "../stores/counter";
 
 export default defineComponent({
   name: "BaseQuestion",
+  emits: ["submit"],
   props: {
     quizData: {
       type: Object,
       default: () => ({}),
     },
   },
-  setup() {
+  setup(props, { emit }) {
     const counterStore = useCounterStore();
-    const answer = ref([]);
+    // const defaultState = {};
+    let answer = ref({});
+    // function resetState() {
+    //   Object.assign(answer, defaultState);
+    // }
+    const onSubmit = () => {
+      console.log(answer);
+      emit("submit", answer);
+      // resetState();
+    };
 
-    return { counterStore, answer };
+    return { counterStore, answer, onSubmit, emit };
   },
 });
 </script>
