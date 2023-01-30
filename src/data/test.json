@@ -6,7 +6,7 @@
   },
   {
     "type": "standard-question",
-    "question": "what gives you the right?",
+    "question": "Are you ok?",
     "options": ["yes", "no", "maybe"]
   }
 ]

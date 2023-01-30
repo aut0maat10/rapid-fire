@@ -2,7 +2,6 @@
   <div class="base-component">
     <h2>{{ quizData?.question }}</h2>
     <div class="options-wrapper">
-      <h2>{{ answer }}</h2>
       <div v-for="(option, index) in quizData?.options" :key="index">
         <input
           type="radio"
