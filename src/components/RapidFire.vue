@@ -3,8 +3,6 @@
     <component
       :is="quizDataStore.quizData[counterStore.count].type"
       :quizData="quizDataStore.quizData[counterStore.count]"
-      v-model="answerObject"
-      @submitAnswer="handleResult"
     />
   </div>
 </template>
@@ -23,11 +21,6 @@ export default defineComponent({
     return {
       quizDataStore,
       counterStore,
-    };
-  },
-  data() {
-    return {
-      answerObject: {},
     };
   },
   components: {

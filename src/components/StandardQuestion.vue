@@ -12,61 +12,29 @@
         <label :for="option">{{ option }}</label>
       </div>
     </div>
-    <button @click="onSubmit" class="next-question-button">
-      Next Question
-    </button>
+    <button class="next-question-button">Next Question</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, ref } from "vue";
 import { useCounterStore } from "../stores/counter";
-
-// interface OurModelType {
-//   answer: string;
-// }
 
 export default defineComponent({
   name: "BaseQuestion",
-  emits: ["update:modelValue"], // The component emits an event
   props: {
     quizData: {
       type: Object,
       default: () => ({}),
     },
-    modelValue: {
-      type: Object,
-      default: () => ({}),
-    },
   },
-  setup(props, { emit }) {
+  setup() {
     const counterStore = useCounterStore();
-    const answer = computed({
-      // Use computed to wrap the object
-      get: () => props.modelValue,
-      set: (value) => emit("update:modelValue", value),
-    });
+    const answer = ref([]);
 
-    return { answer, counterStore };
-  },
-  methods: {
-    onSubmit() {
-      this.counterStore.increment();
-    },
+    return { counterStore, answer };
   },
 });
-// data() {
-//   return {
-//     picked: "",
-//   };
-// },
-
-//   computed: {
-//     btnDisabled() {
-//       return !this.picked;
-//     },
-//   },
-// });
 </script>
 
 <style scoped></style>
