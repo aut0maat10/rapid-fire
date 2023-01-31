@@ -33,15 +33,11 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const counterStore = useCounterStore();
-    // const defaultState = {};
     let answer = ref({});
-    // function resetState() {
-    //   Object.assign(answer, defaultState);
-    // }
+    // methods
     const onSubmit = () => {
       console.log(answer);
       emit("submit", answer);
-      // resetState();
     };
 
     return { counterStore, answer, onSubmit, emit };
