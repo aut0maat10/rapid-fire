@@ -2,17 +2,27 @@
   <div class="base-component">
     <h2>{{ quizData?.question }}</h2>
     <div class="options-wrapper">
-      <div v-for="(option, index) in quizData?.options" :key="index">
+      <label
+        v-for="(option, index) in quizData?.options"
+        :key="index"
+        :for="option"
+        class="rf-button options-button"
+      >
         <input
           type="radio"
           :id="option"
-          :value="{ option: option, index: index, question: quizData.question }"
+          :value="{
+            option: option,
+            index: index,
+            question: quizData.question,
+          }"
           v-model="answer"
         />
-        <label :for="option">{{ option }}</label>
-      </div>
+        {{ option }}
+      </label>
+      <!-- </div> -->
     </div>
-    <button @click="onSubmit" class="next-question-button">
+    <button @click="onSubmit" class="next-question-button rf-button">
       Next Question
     </button>
   </div>
@@ -45,4 +55,16 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.options-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.options-button input {
+  margin-right: 1rem;
+}
+input[type="radio"] {
+  flex-shrink: 0;
+}
+</style>
