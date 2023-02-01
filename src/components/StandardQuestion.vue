@@ -20,16 +20,19 @@
         />
         {{ option }}
       </label>
-      <!-- </div> -->
     </div>
-    <button @click="onSubmit" class="next-question-button rf-button">
+    <button
+      :disabled="!canSubmit"
+      @click="onSubmit"
+      class="next-question-button rf-button"
+    >
       Next Question
     </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import { useCounterStore } from "../stores/counter";
 
 export default defineComponent({
@@ -45,12 +48,14 @@ export default defineComponent({
     const counterStore = useCounterStore();
     let answer = ref({});
     // methods
+    const canSubmit = computed(() => {
+      return Object.keys(answer.value).length !== 0;
+    });
     const onSubmit = () => {
-      console.log(answer);
       emit("submit", answer);
     };
 
-    return { counterStore, answer, onSubmit, emit };
+    return { counterStore, answer, onSubmit, emit, canSubmit };
   },
 });
 </script>
