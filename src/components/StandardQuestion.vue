@@ -7,6 +7,7 @@
         :key="index"
         :for="option"
         class="rf-button options-button"
+        :class="{ selected: isSelected(index) }"
       >
         <input
           type="radio"
@@ -33,8 +34,14 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
+import type { Ref } from "vue";
 import { useCounterStore } from "../stores/counter";
 
+interface Answer {
+  index?: number;
+  option?: string;
+  question?: string;
+}
 export default defineComponent({
   name: "BaseQuestion",
   emits: ["submit"],
@@ -44,9 +51,10 @@ export default defineComponent({
       default: () => ({}),
     },
   },
+
   setup(props, { emit }) {
     const counterStore = useCounterStore();
-    let answer = ref({});
+    let answer: Ref<Answer> = ref({});
     // methods
     const canSubmit = computed(() => {
       return Object.keys(answer.value).length !== 0;
@@ -54,8 +62,11 @@ export default defineComponent({
     const onSubmit = () => {
       emit("submit", answer);
     };
+    const isSelected = (index: number) => {
+      return index === answer.value["index"];
+    };
 
-    return { counterStore, answer, onSubmit, emit, canSubmit };
+    return { counterStore, answer, onSubmit, emit, canSubmit, isSelected };
   },
 });
 </script>
@@ -68,22 +79,18 @@ export default defineComponent({
 .options-button {
   display: flex;
 }
+.options-button:hover {
+  background: #282828;
+  color: #fff;
+}
 .options-button input {
-  /* margin-right: 1rem; */
   font-size: 2rem;
   font-weight: bold;
   line-height: 1.1;
-  /* display: grid; */
-  /* grid-template-columns: 1em auto;
-  gap: 0.5em; */
 }
-/* .next-question-button:active {
-  background-color: #7fbeab;
-} */
 input[type="radio"] {
   flex-shrink: 0;
   appearance: none;
-  /* background-color: #fff; */
   margin-right: 1rem;
   font: inherit;
   color: currentColor;
@@ -112,5 +119,9 @@ input[type="radio"]:checked::before {
 input[type="radio"]:focus {
   outline: max(2px, 0.15em) solid currentColor;
   outline-offset: max(2px, 0.15em);
+}
+.selected {
+  background: #282828;
+  color: #fff;
 }
 </style>
