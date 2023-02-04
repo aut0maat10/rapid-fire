@@ -1,5 +1,5 @@
 <template>
-  <div>Hello World</div>
+  <div>Take this quiz to get started!</div>
   <button @click="startQuiz" class="rf-button">Start Quiz</button>
 </template>
 

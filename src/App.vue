@@ -7,7 +7,7 @@ import RapidFire from "./components/RapidFire.vue";
     <img
       alt="Vue logo"
       class="logo"
-      src="./assets/logo.svg"
+      src="https://source.unsplash.com/random"
       width="125"
       height="125"
     />
