@@ -1,9 +1,9 @@
 <template>
-  <main class="startscreen" :style="{backgroundImage: `url(${backgroundImg})`}">
+  <main class="startscreen flex flex-col flex-wrap justify-center content-center gap-y-4" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div>
-      <h2 class="text-4xl font-bold">Where should you travel next?</h2>
+      <h2 class="text-5xl font-bold text-slate-100">Where should you travel next?</h2>
     </div>
-  <button @click="startQuiz" class="rf-button">Start Quiz</button>
+  <button @click="startQuiz" class="btn btn-secondary mx-auto">Take Quiz &#8594;</button>
   </main> 
 </template>
 
@@ -27,10 +27,10 @@ export default defineComponent({
 <style scoped>
   .startscreen {
     height: 100vh;
-    display: flex;
+    /* display: flex; 
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
   }
   main {
     background-size: cover;
