@@ -4,14 +4,6 @@ import RapidFire from "./components/RapidFire.vue";
 
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="https://source.unsplash.com/random"
-      width="125"
-      height="125"
-    />
-
     <div class="wrapper">
       <RapidFire />
     </div>

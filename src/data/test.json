@@ -8,5 +8,10 @@
     "type": "standard-question",
     "question": "Are you ok?",
     "options": ["yes", "no", "maybe"]
+  },
+  {
+    "type": "standard-question",
+    "question": "Do you know where you're going?",
+    "options": ["yes", "no clue", "rarely"]
   }
 ]
