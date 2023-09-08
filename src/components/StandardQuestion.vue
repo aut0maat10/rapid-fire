@@ -1,16 +1,17 @@
 <template>
-  <div class="base-component">
-    <h2>{{ quizData?.question }}</h2>
-    <div class="options-wrapper">
+  <div class="base-component flex flex-col flex-wrap justify-center content-center gap-y-4">
+    <h2 class="text-5xl font-bold text-slate-100 text-center">{{ quizData?.question }}</h2>
+    <div class="options-wrapper flex flex-col flex-wrap justify-center content-center gap-y-4">
       <label
         v-for="(option, index) in quizData?.options"
         :key="index"
         :for="option"
-        class="rf-button options-button"
+        class="btn btn-outline options-button hover:bg-neutral-800:text-white"
         :class="{ selected: isSelected(index) }"
       >
         <input
           type="radio"
+          class="text-bold text-2xl leading-5 appearance-none mr-4 text-current"
           :id="option"
           :value="{
             option: option,
@@ -25,7 +26,7 @@
     <button
       :disabled="!canSubmit"
       @click="onSubmit"
-      class="next-question-button rf-button"
+      class="btn btn-outline options-button"
     >
       Next Question
     </button>
@@ -72,24 +73,24 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.options-wrapper {
+/* .options-wrapper {
   display: flex;
   flex-direction: column;
-}
-.options-button {
+} */
+/* .options-button {
   display: flex;
-}
-.options-button:hover {
+} */
+/* .options-button:hover {
   background: #282828;
   color: #fff;
-}
+} */
 .options-button input {
-  font-size: 2rem;
-  font-weight: bold;
-  line-height: 1.1;
+  /* font-size: 2rem;
+  font-weight: bold; */
+  /* line-height: 1.1; */
 }
 input[type="radio"] {
-  flex-shrink: 0;
+  /* flex-shrink: 0;
   appearance: none;
   margin-right: 1rem;
   font: inherit;
@@ -100,7 +101,7 @@ input[type="radio"] {
   border-radius: 50%;
   transform: translateY(0.2em);
   display: grid;
-  place-content: center;
+  place-content: center; */
 }
 input[type="radio"]::before {
   content: "";

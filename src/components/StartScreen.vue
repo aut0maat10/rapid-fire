@@ -1,5 +1,5 @@
 <template>
-  <main class="startscreen flex flex-col flex-wrap justify-center content-center gap-y-4" :style="{backgroundImage: `url(${backgroundImg})`}">
+  <main class="startscreen h-screen flex flex-col flex-wrap justify-center content-center gap-y-4" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div>
       <h2 class="text-5xl font-bold text-slate-100">Where should you travel next?</h2>
     </div>
@@ -25,13 +25,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .startscreen {
-    height: 100vh;
-    /* display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-  }
   main {
     background-size: cover;
     background-position: 50% 40%;
