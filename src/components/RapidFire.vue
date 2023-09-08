@@ -8,7 +8,8 @@
       :quizData="quizDataStore.quizData[counterStore.count]"
       @submit="submitHandler"
     />
-    <EndScreen v-if="quizCompleted" />
+    <EmailPrompt v-if="quizCompleted" />
+    <!-- <EndScreen v-if="quizCompleted && emailSubmitted TODO" /> -->
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import { defineComponent, onMounted, ref } from "vue";
 import StandardQuestion from "./StandardQuestion.vue";
 import StartScreen from "./StartScreen.vue";
 import EndScreen from "./EndScreen.vue";
+import EmailPrompt from "./EmailPrompt.vue";
 import { useQuizDataStore } from "@/stores/QuizData";
 import { isCoreComponent } from "@vue/compiler-core";
 import { useCounterStore } from "../stores/counter";
@@ -61,6 +63,7 @@ export default defineComponent({
     isCoreComponent,
     StartScreen,
     EndScreen,
+    EmailPrompt
   },
 });
 </script>
