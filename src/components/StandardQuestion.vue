@@ -1,17 +1,17 @@
 <template>
   <div class="base-component flex flex-col flex-wrap justify-center content-center gap-y-4">
     <h2 class="text-5xl font-bold text-slate-100 text-center">{{ quizData?.question }}</h2>
-    <div class="options-wrapper flex flex-col flex-wrap justify-center content-center gap-y-4">
+    <div class="options-wrapper flex flex-col flex-wrap justify-center content-center gap-y-4 my-8">
       <label
         v-for="(option, index) in quizData?.options"
         :key="index"
         :for="option"
-        class="btn btn-outline flex justify-start gap-x-4 options-button hover:bg-neutral-800:text-white"
-        :class="{ selected: isSelected(index) }"
+        class="btn btn-outline btn-success flex justify-start gap-x-4"
+        :class="{ [`btn-active`]: isSelected(index) }"
       >
         <input
           type="radio"
-          class="w-4 h-4 radio-success focus:ring-secondary focus:ring-1"
+          class="radio radio-accent"
           :id="option"
           :value="{
             option: option,
@@ -26,7 +26,7 @@
     <button
       :disabled="!canSubmit"
       @click="onSubmit"
-      class="btn btn-outline options-button"
+      class="btn btn-secondary min-w-40 self-center"
     >
       Next Question
     </button>
@@ -73,56 +73,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* .options-wrapper {
-  display: flex;
-  flex-direction: column;
-} */
-/* .options-button {
-  display: flex;
-} */
-/* .options-button:hover {
-  background: #282828;
+/* .selected {
+  background: #d926a9;
   color: #fff;
 } */
-/* .options-button input { */
-  /* font-size: 2rem;
-  font-weight: bold; */
-  /* line-height: 1.1; */
-/* } */
-/* input[type="radio"] { */
-  /* flex-shrink: 0;
-  appearance: none;
-  margin-right: 1rem;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 50%;
-  transform: translateY(0.2em);
-  display: grid;
-  place-content: center; */
-/* } */
-/* input[type="radio"]::before { */
-  /* content: "";
-  width: 0.65em;
-  height: 0.65em; */
-  /* border-radius: 50%; */
-  /* transform: scale(0); */
-  /* transition: 120ms transform ease-in-out; */
-  /* box-shadow: inset -1em 1em #2de1c2; */
-/* } */
-
-/* input[type="radio"]:checked:before {
-  transform: scale(1);
-} */
-
-/* input[type="radio"]:focus {
-  outline: max(2px, 0.15em) solid currentColor;
-  outline-offset: max(2px, 0.15em);
-} */
-.selected {
-  background: #282828;
-  color: #fff;
-}
 </style>
