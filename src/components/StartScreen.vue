@@ -1,5 +1,5 @@
 <template>
-  <main class="startscreen h-screen flex flex-col flex-wrap justify-center content-center gap-y-4" :style="{backgroundImage: `url(${backgroundImg})`}">
+  <main class="startscreen h-screen flex flex-col basis-full flex-wrap justify-center content-center gap-y-4" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div>
       <h2 class="text-5xl font-bold text-slate-100">Where should you travel next?</h2>
     </div>

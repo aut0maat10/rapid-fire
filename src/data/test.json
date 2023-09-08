@@ -1,17 +1,17 @@
 [
   {
     "type": "standard-question",
-    "question": "Which bear is best?",
-    "options": ["black bear", "brown bear", "grizzly bear"]
+    "question": "What is your favorite view?",
+    "options": ["The beach", "The mountains", "The city"]
   },
   {
     "type": "standard-question",
-    "question": "Are you ok?",
-    "options": ["yes", "no", "maybe"]
+    "question": "What would you like to eat?",
+    "options": ["pizza", "chocolate", "seafood"]
   },
   {
     "type": "standard-question",
-    "question": "Do you know where you're going?",
-    "options": ["yes", "no clue", "rarely"]
+    "question": "Which activity would you like to try?",
+    "options": ["Hiking", "Barhopping", "Sailing"]
   }
 ]

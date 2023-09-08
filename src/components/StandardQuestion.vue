@@ -6,12 +6,12 @@
         v-for="(option, index) in quizData?.options"
         :key="index"
         :for="option"
-        class="btn btn-outline options-button hover:bg-neutral-800:text-white"
+        class="btn btn-outline flex justify-start gap-x-4 options-button hover:bg-neutral-800:text-white"
         :class="{ selected: isSelected(index) }"
       >
         <input
           type="radio"
-          class="text-bold text-2xl leading-5 appearance-none mr-4 text-current"
+          class="w-4 h-4 radio-success focus:ring-secondary focus:ring-1"
           :id="option"
           :value="{
             option: option,
@@ -20,7 +20,7 @@
           }"
           v-model="answer"
         />
-        {{ option }}
+        <span>{{ option }}</span>
       </label>
     </div>
     <button
@@ -84,12 +84,12 @@ export default defineComponent({
   background: #282828;
   color: #fff;
 } */
-.options-button input {
+/* .options-button input { */
   /* font-size: 2rem;
   font-weight: bold; */
   /* line-height: 1.1; */
-}
-input[type="radio"] {
+/* } */
+/* input[type="radio"] { */
   /* flex-shrink: 0;
   appearance: none;
   margin-right: 1rem;
@@ -102,25 +102,25 @@ input[type="radio"] {
   transform: translateY(0.2em);
   display: grid;
   place-content: center; */
-}
-input[type="radio"]::before {
-  content: "";
+/* } */
+/* input[type="radio"]::before { */
+  /* content: "";
   width: 0.65em;
-  height: 0.65em;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset -1em 1em #2de1c2;
-}
+  height: 0.65em; */
+  /* border-radius: 50%; */
+  /* transform: scale(0); */
+  /* transition: 120ms transform ease-in-out; */
+  /* box-shadow: inset -1em 1em #2de1c2; */
+/* } */
 
-input[type="radio"]:checked::before {
+/* input[type="radio"]:checked:before {
   transform: scale(1);
-}
+} */
 
-input[type="radio"]:focus {
+/* input[type="radio"]:focus {
   outline: max(2px, 0.15em) solid currentColor;
   outline-offset: max(2px, 0.15em);
-}
+} */
 .selected {
   background: #282828;
   color: #fff;
