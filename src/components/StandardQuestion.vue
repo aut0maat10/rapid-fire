@@ -73,8 +73,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* .selected {
-  background: #d926a9;
-  color: #fff;
-} */
 </style>
