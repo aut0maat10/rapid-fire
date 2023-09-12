@@ -6,24 +6,26 @@
     <h2 class="text-5xl font-bold text-slate-100 my-8">
       Are you ready to see your results?
     </h2>
-    <h1>{{ userData.userName }}</h1>
-    <form class="flex flex-col" action="">
-      <label for="name">Please enter your name</label>
+    <form
+      class="flex flex-col flex-wrap justify-center content-center"
+      action=""
+    >
+      <label for="name" class="mt-4"></label>
       <input
         type="name"
         v-model="userData.userName"
-        placeholder="Type here"
+        placeholder="First name"
         class="input input-bordered w-full max-w-xs"
       />
-      <label for="email">Your best email</label>
+      <label for="email" class="mt-4"></label>
       <input
         type="email"
         v-model="userData.userEmail"
-        placeholder="test@testing.org"
+        placeholder="Email"
         class="input input-bordered w-full max-w-xs"
       />
       <button
-        class="btn btn-secondary"
+        class="btn btn-secondary mt-8"
         :class="{ [`btn-active`]: canSubmit }"
         type="submit"
       >
