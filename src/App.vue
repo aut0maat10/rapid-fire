@@ -3,10 +3,9 @@ import RapidFire from "./components/RapidFire.vue";
 </script>
 
 <template>
-    <div class="wrapper">
-      <RapidFire />
-    </div>
+  <div class="wrapper">
+    <RapidFire />
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

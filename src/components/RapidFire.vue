@@ -63,10 +63,9 @@ export default defineComponent({
     isCoreComponent,
     StartScreen,
     EndScreen,
-    EmailPrompt
+    EmailPrompt,
   },
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,7 +1,13 @@
 <template>
-  <div class="base-component flex flex-col flex-wrap justify-center content-center gap-y-4">
-    <h2 class="text-5xl font-bold text-slate-100 text-center">{{ quizData?.question }}</h2>
-    <div class="options-wrapper flex flex-col flex-wrap justify-center content-center gap-y-4 my-8">
+  <div
+    class="base-component flex flex-col flex-wrap justify-center content-center gap-y-4"
+  >
+    <h2 class="text-5xl font-bold text-slate-100 text-center">
+      {{ quizData?.question }}
+    </h2>
+    <div
+      class="options-wrapper flex flex-col flex-wrap justify-center content-center gap-y-4 my-8"
+    >
       <label
         v-for="(option, index) in quizData?.options"
         :key="index"
@@ -72,5 +78,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
