@@ -8,8 +8,11 @@
       :quizData="quizDataStore.quizData[counterStore.count]"
       @submit="submitHandler"
     />
-    <EmailPrompt v-if="quizCompleted" />
-    <!-- <EndScreen v-if="quizCompleted && emailSubmitted TODO" /> -->
+    <EmailPrompt
+      @userDataSubmit="userDataSubmitHandler"
+      v-if="quizCompleted && !userDataSubmitted"
+    />
+    <EndScreen v-if="userDataSubmitted" />
   </div>
 </template>
 
@@ -32,6 +35,7 @@ export default defineComponent({
     // lifecycle
     const quizStarted = ref(false);
     const quizCompleted = ref(false);
+    const userDataSubmitted = ref(false);
     // store
     const quizDataStore = useQuizDataStore();
     const counterStore = useCounterStore();
@@ -44,6 +48,12 @@ export default defineComponent({
         quizCompleted.value = true;
       }
     };
+    const userDataSubmitHandler = (submission: any) => {
+      answersStore.submitAnswer(submission);
+      userDataSubmitted.value = true;
+      // quizCompleted.value = true;
+      // quizStarted.value = true;
+    };
     const startHandler = () => {
       quizStarted.value = true;
     };
@@ -55,7 +65,9 @@ export default defineComponent({
       onMounted,
       quizStarted,
       quizCompleted,
+      userDataSubmitted,
       startHandler,
+      userDataSubmitHandler,
     };
   },
   components: {

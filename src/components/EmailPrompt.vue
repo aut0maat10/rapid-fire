@@ -11,13 +11,13 @@
       class="flex flex-col flex-wrap justify-center content-center"
       action=""
     >
-      <label for="name" class="mt-4"></label>
+      <!-- <label for="name" class="mt-4"></label>
       <input
         type="name"
         v-model="userData.userName"
         placeholder="First name"
         class="input input-bordered w-full max-w-xs"
-      />
+      /> -->
       <!-- <label for="email" class="mt-4"></label>
       <input
         type="email"
@@ -25,8 +25,26 @@
         placeholder="Email"
         class="input input-bordered w-full max-w-xs"
       /> -->
-      <div :class="{ error: v$.userEmail.$errors.length }">
+      <div class="mt-4" :class="{ error: v$.userName.$errors.length }">
+        <label for="name"></label>
         <input
+          name="firstname"
+          class="input input-bordered w-full max-w-xs"
+          placeholder="First name"
+          v-model="userData.userName"
+        />
+        <div
+          class="input-errors"
+          v-for="error of v$.userName.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
+      </div>
+      <div class="mt-4" :class="{ error: v$.userEmail.$errors.length }">
+        <label for="email"></label>
+        <input
+          type="email"
           class="input input-bordered w-full max-w-xs"
           placeholder="Email"
           v-model="userData.userEmail"
@@ -63,8 +81,8 @@ interface FormData {
 
 export default defineComponent({
   name: "EmailPrompt",
-
-  setup() {
+  emits: ["userDataSubmit"],
+  setup(props, { emit }) {
     const userData = reactive<FormData>({ userName: "", userEmail: "" });
     const rules = {
       userName: { required },
@@ -78,7 +96,8 @@ export default defineComponent({
       console.log(v$.value);
       const result = await v$.value.userEmail.$validate();
       if (result) {
-        alert("success");
+        $event.preventDefault();
+        emit("userDataSubmit", userData);
       } else {
         $event.preventDefault();
         console.log(v$);
