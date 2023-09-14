@@ -1,14 +1,14 @@
 <template>
   <div
     class="h-screen flex flex-col basis-full flex-wrap bg-cover bg-bottom justify-center content-center gap-y-4"
-    :style="{ backgroundImage: `url(${backgroundImage})` }"
+    :style="{ backgroundImage: `url(${backgroundImg})` }"
   >
     <h2>Nice to meet you, {{ userName }}!</h2>
     <p>
       Since your favorite view is {{ userPreferences.favoriteView }} and you are
       interested in {{ userPreferences.favoriteActivity }}, your next travel
-      destination should be {{ recommendation(userPreferences) }}. And, don't
-      forget to treat yourself to some {{ userPreferences.favoriteFood }}!
+      destination should be {{ destination }}. And, don't forget to treat
+      yourself to some {{ userPreferences.favoriteFood }}!
     </p>
     <button class="btn btn-secondary">Check out our offers &#8594;</button>
   </div>
@@ -17,7 +17,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useAnswersStore } from "../stores/answers";
-import backgroundImage from "@/assets/img/nyc.jpg";
+import nyc from "@/assets/img/nyc.jpg";
+import vienna from "@/assets/img/vienna.jpg";
+import martinique from "@/assets/img/martinique.jpg";
+
 interface userPreferences {
   favoriteView: string;
   favoriteFood: string;
@@ -34,25 +37,36 @@ export default defineComponent({
       favoriteFood: userInput[1].value.option.toLowerCase(),
       favoriteActivity: userInput[2].value.option.toLowerCase(),
     };
-
     const recommendation = (preferences: userPreferences) => {
-      let rec: string = "";
+      let destination: string = "";
+      let backgroundImg;
       switch (preferences.favoriteView) {
-        case "The beach":
-          rec = "Martinique";
+        case "the beach":
+          destination = "Martinique";
+          backgroundImg = martinique;
           break;
-        case "The mountains":
-          rec = "Geneva";
+        case "the mountains":
+          destination = "Vienna";
+          backgroundImg = vienna;
           break;
         default:
-          rec = "New York City";
+          destination = "New York City";
+          backgroundImg = nyc;
       }
-      return rec;
+      return {
+        destination,
+        backgroundImg,
+      };
     };
+    const { destination, backgroundImg } = recommendation(userPreferences);
 
     return {
       answersStore,
-      backgroundImage,
+      backgroundImg,
+      destination,
+      nyc,
+      vienna,
+      martinique,
       userName,
       recommendation,
       userInput,
