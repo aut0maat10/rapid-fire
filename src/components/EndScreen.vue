@@ -1,16 +1,27 @@
 <template>
   <div
-    class="h-screen flex flex-col basis-full flex-wrap bg-cover bg-bottom justify-center content-center gap-y-4"
+    class="endscreen h-screen flex flex-col basis-full flex-wrap bg-cover bg-bottom justify-center content-center gap-y-4"
     :style="{ backgroundImage: `url(${backgroundImg})` }"
   >
-    <h2>Nice to meet you, {{ userName }}!</h2>
-    <p>
-      Since your favorite view is {{ userPreferences.favoriteView }} and you are
-      interested in {{ userPreferences.favoriteActivity }}, your next travel
-      destination should be {{ destination }}. And, don't forget to treat
-      yourself to some {{ userPreferences.favoriteFood }}!
-    </p>
-    <button class="btn btn-secondary">Check out our offers &#8594;</button>
+    <div
+      class="wrapper rounded max-w-3xl bg-black bg-opacity-30 flex flex-col flex-wrap justify-center content-center px-8 py-12 gap-y-4 text-center"
+    >
+      <h2 class="text-5xl font-bold text-slate-100">
+        Nice to meet you,
+        {{ userName }}!
+      </h2>
+      <p class="text-2xl text-slate-100 py-4">
+        Since your favorite view is {{ userPreferences.favoriteView }} and you
+        are interested in {{ userPreferences.favoriteActivity }}, your next
+        travel destination should be
+        <span class="text-secondary text-4xl font-bold">{{ destination }}</span
+        >. <br /><br />And, don't forget to treat yourself to some
+        {{ userPreferences.favoriteFood }}!
+      </p>
+      <button class="btn btn-secondary max-w-xs mx-auto">
+        Check out our offers &#8594;
+      </button>
+    </div>
   </div>
 </template>
 
@@ -76,4 +87,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.endscreen {
+  box-shadow: inset 0 0 0 2000px rgba(22, 21, 22, 0.3);
+}
+</style>
