@@ -1,0 +1,50 @@
+name: Deploy
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Checkout repo
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
+            
+            - name: Install dependencies
+              run: bahmutov/npm-install@v1
+            
+            - name: Build project
+              run: npm run build
+            
+            - name: Upload production-ready build files
+              uses: actions/upload-artifact@v3
+              with:
+                name: production-files
+                path: ./dist
+      
+    deploy:
+        name: Deploy
+        needs: build
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+    
+        steps:
+            - name: Download artifact
+              uses: actions/download-artifact@v3
+              with:
+                name: production-files
+                path: ./dist
+
+            - name: Configure AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-access-key-id: ${{ secrets. AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets. AWS_SECRET_ACCESS_KEY }}
+                aws-region: us-west-1
+            - name: Copy to S3
+              run: aws s3 sync ./dist/ s3://rapid-fire-demo
