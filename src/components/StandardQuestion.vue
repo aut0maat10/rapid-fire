@@ -12,7 +12,7 @@
         v-for="(option, index) in quizData?.options"
         :key="index"
         :for="option"
-        class="btn btn-outline btn-success flex justify-start gap-x-4"
+        class="btn btn-outline btn-success flex justify-start gap-x-4 sm:min-w-full lg:min-w-0"
         :class="{ [`btn-active`]: isSelected(index) }"
       >
         <input
@@ -32,7 +32,7 @@
     <button
       :disabled="!canSubmit"
       @click="onSubmit"
-      class="btn btn-secondary min-w-40 self-center"
+      class="btn btn-secondary self-center"
     >
       Next Question
     </button>

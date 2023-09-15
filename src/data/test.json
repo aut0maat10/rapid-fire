@@ -1,7 +1,7 @@
 [
   {
     "type": "standard-question",
-    "question": "What is your favorite view?",
+    "question": "What's your favorite view?",
     "options": ["The beach", "The mountains", "The city"]
   },
   {

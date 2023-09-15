@@ -4,7 +4,7 @@
     :style="{ backgroundImage: `url(${backgroundImg})` }"
   >
     <div
-      class="wrapper rounded max-w-3xl bg-black bg-opacity-30 flex flex-col flex-wrap justify-center content-center px-8 py-12 gap-y-4 text-center"
+      class="wrapper rounded max-w-3xl bg-black bg-opacity-40 flex flex-col flex-wrap justify-center content-center px-8 py-12 gap-y-4 text-center"
     >
       <h2 class="text-5xl font-bold text-slate-100">
         Nice to meet you,
