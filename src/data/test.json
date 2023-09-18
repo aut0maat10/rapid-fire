@@ -1,17 +1,24 @@
-[
-  {
-    "type": "standard-question",
-    "question": "What's your favorite view?",
-    "options": ["The beach", "The mountains", "The city"]
+{
+  "type": "rapid-fire-quiz",
+  "startscreen": {
+    "introtext": "Where should you travel next?",
+    "buttontext": "Take Quiz"
   },
-  {
-    "type": "standard-question",
-    "question": "What would you like to eat?",
-    "options": ["pizza", "chocolate", "seafood"]
-  },
-  {
-    "type": "standard-question",
-    "question": "Which activity would you like to try?",
-    "options": ["Hiking", "Barhopping", "Sailing"]
-  }
-]
+  "questions": [
+    {
+      "type": "standard-question",
+      "question": "What's your favorite view?",
+      "options": ["The beach", "The mountains", "The city"]
+    },
+    {
+      "type": "standard-question",
+      "question": "What would you like to eat?",
+      "options": ["pizza", "chocolate", "seafood"]
+    },
+    {
+      "type": "standard-question",
+      "question": "Which activity would you like to try?",
+      "options": ["Hiking", "Barhopping", "Sailing"]
+    }
+  ]
+}

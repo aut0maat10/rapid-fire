@@ -4,6 +4,6 @@ import quizData from "@/data/test.json";
 export const useQuizDataStore = defineStore("quizData", {
   state: () => ({
     quizData,
-    questionsCount: quizData.length,
+    questionsCount: quizData.questions.length,
   }),
 });

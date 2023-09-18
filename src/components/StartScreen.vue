@@ -5,11 +5,11 @@
   >
     <div>
       <h2 class="text-5xl font-bold text-slate-100">
-        Where should you travel next?
+        {{ startScreenData.introtext }}
       </h2>
     </div>
     <button @click="startQuiz" class="btn btn-secondary mx-auto">
-      Take Quiz &#8594;
+      {{ startScreenData.buttontext }} &#8594;
     </button>
   </main>
 </template>
@@ -17,16 +17,19 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import backgroundImg from "@/assets/img/startscreen-bg.jpg";
+import { useQuizDataStore } from "@/stores/QuizData";
 
 export default defineComponent({
   name: "StartScreen",
   emits: ["quizStarted"],
   setup(props, { emit }) {
+    const quizDataStore = useQuizDataStore();
+    const startScreenData = quizDataStore.quizData.startscreen;
     const startQuiz = () => {
       emit("quizStarted");
     };
 
-    return { emit, startQuiz, backgroundImg };
+    return { emit, startQuiz, backgroundImg, quizDataStore, startScreenData };
   },
 });
 </script>
