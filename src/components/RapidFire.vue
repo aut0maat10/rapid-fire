@@ -3,9 +3,9 @@
     <StartScreen v-if="!quizStarted" @quizStarted="startHandler" />
     <component
       v-if="quizStarted && !quizCompleted"
-      :key="quizDataStore.quizData[counterStore.count]"
-      :is="quizDataStore.quizData[counterStore.count].type"
-      :quizData="quizDataStore.quizData[counterStore.count]"
+      :key="quizDataStore.quizData.questions[counterStore.count]"
+      :is="quizDataStore.quizData.questions[counterStore.count].type"
+      :quizData="quizDataStore.quizData.questions[counterStore.count]"
       @submit="submitHandler"
     />
     <EmailPrompt
