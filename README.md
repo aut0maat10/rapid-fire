@@ -23,7 +23,7 @@ Here is the `json` data template used for the demo version:
   {
     "type": "standard-question",
     "question": "Which activity would you like to try?",
-    "options": ["Hiking", "Barhopping", "Sailing"]
+    "options": ["Hiking", "Barhopping", "Shopping"]
   }
 ]
 ```

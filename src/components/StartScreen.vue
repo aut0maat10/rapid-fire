@@ -4,7 +4,7 @@
     :style="{ backgroundImage: `url(${backgroundImg})` }"
   >
     <div>
-      <h2 class="text-5xl font-bold text-slate-100">
+      <h2 class="text-5xl font-bold text-slate-100 mb-4">
         {{ startScreenData.introtext }}
       </h2>
     </div>

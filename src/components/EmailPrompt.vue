@@ -11,34 +11,23 @@
       class="flex flex-col flex-wrap justify-center content-center"
       action=""
     >
-      <!-- <label for="name" class="mt-4"></label>
-      <input
-        type="name"
-        v-model="userData.userName"
-        placeholder="First name"
-        class="input input-bordered w-full max-w-xs"
-      /> -->
-      <!-- <label for="email" class="mt-4"></label>
-      <input
-        type="email"
-        v-model="userData.userEmail"
-        placeholder="Email"
-        class="input input-bordered w-full max-w-xs"
-      /> -->
       <div class="mt-4" :class="{ error: v$.userName.$errors.length }">
         <label for="name"></label>
         <input
           name="firstname"
           class="input input-bordered w-full max-w-xs"
+          :class="{ [`input-error`]: v$.userName.$errors.length }"
           placeholder="First name"
           v-model="userData.userName"
         />
         <div
-          class="input-errors"
+          class="input-errors bg-error rounded"
           v-for="error of v$.userName.$errors"
           :key="error.$uid"
         >
-          <div class="error-msg">{{ error.$message }}</div>
+          <div class="error-msg text-error-content text-center p-1">
+            Please enter your name
+          </div>
         </div>
       </div>
       <div class="mt-4" :class="{ error: v$.userEmail.$errors.length }">
@@ -46,15 +35,18 @@
         <input
           type="email"
           class="input input-bordered w-full max-w-xs"
+          :class="{ [`input-error`]: v$.userEmail.$errors.length }"
           placeholder="Email"
           v-model="userData.userEmail"
         />
         <div
-          class="input-errors"
+          class="input-errors bg-error rounded"
           v-for="error of v$.userEmail.$errors"
           :key="error.$uid"
         >
-          <div class="error-msg">{{ error.$message }}</div>
+          <div class="error-msg text-error-content text-center p-1">
+            Please enter a valid email
+          </div>
         </div>
       </div>
       <button
@@ -71,7 +63,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, email } from "@vuelidate/validators";
+import { required, email, minLength } from "@vuelidate/validators";
 import backgroundImg from "@/assets/img/startscreen-bg.jpg";
 
 interface FormData {
@@ -85,7 +77,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const userData = reactive<FormData>({ userName: "", userEmail: "" });
     const rules = {
-      userName: { required },
+      userName: { required, minLength: minLength(1) },
       userEmail: { required, email },
     };
     const v$ = useVuelidate(rules, userData);
@@ -94,18 +86,17 @@ export default defineComponent({
     );
     const handleSubmit = async ($event: any) => {
       console.log(v$.value);
-      const result = await v$.value.userEmail.$validate();
+      const result = await v$.value.$validate();
       if (result) {
         $event.preventDefault();
         emit("userDataSubmit", userData);
       } else {
         $event.preventDefault();
         console.log(v$);
-        alert("error");
       }
     };
 
-    return { userData, handleSubmit, backgroundImg, canSubmit, v$ };
+    return { userData, handleSubmit, backgroundImg, canSubmit, v$, minLength };
   },
 });
 </script>
