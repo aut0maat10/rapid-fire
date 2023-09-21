@@ -18,7 +18,7 @@
         >. <br /><br />And, don't forget to treat yourself to some
         {{ userPreferences.favoriteFood }}!
       </p>
-      <button class="btn btn-secondary max-w-xs mx-auto">
+      <button @click="redirect" class="btn btn-secondary max-w-xs mx-auto">
         Check out our offers &#8594;
       </button>
     </div>
@@ -70,6 +70,9 @@ export default defineComponent({
       };
     };
     const { destination, backgroundImg } = recommendation(userPreferences);
+    const redirect = () => {
+      window.location.href = `https://www.google.com/search?q=${destination}`;
+    };
 
     return {
       answersStore,
@@ -82,6 +85,7 @@ export default defineComponent({
       recommendation,
       userInput,
       userPreferences,
+      redirect,
     };
   },
 });
