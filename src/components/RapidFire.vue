@@ -1,5 +1,5 @@
 <template>
-  <div class="rapid-fire h-screen flex wrap justify-center">
+  <div class="rapid-fire h-screen flex wrap justify-center bg-slate-900">
     <StartScreen v-if="!quizStarted" @quizStarted="startHandler" />
     <component
       v-if="quizStarted && !quizCompleted"
