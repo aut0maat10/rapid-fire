@@ -3,7 +3,7 @@
     class="flex flex-col flex-wrap basis-full justify-center content-center bg-cover bg-center"
     :style="{ backgroundImage: `url(${backgroundImg})` }"
   >
-    <h2 class="text-5xl font-bold text-slate-100 my-8">
+    <h2 class="text-5xl font-bold text-slate-100 my-8 text-center">
       Are you ready to see your results?
     </h2>
     <form
