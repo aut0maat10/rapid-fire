@@ -3,11 +3,11 @@ import { ref, computed } from "vue";
 const props = defineProps({
   quizData: Object,
 });
-const canSubmit = computed(() => answer.value.length > 0);
-const answer = ref([]);
+const canSubmit = computed(() => answers.value.length > 0);
+const answers = ref([]);
 const onSubmit = () => console.log("submit");
 const isSelected = (index: number) => {
-  return index === answer.value["index"];
+  return answers.value.some((answer) => answer["index"] === index);
 };
 </script>
 
@@ -37,7 +37,7 @@ const isSelected = (index: number) => {
             index: index,
             question: props.quizData?.question,
           }"
-          v-model="answer"
+          v-model="answers"
         />
         <span>{{ option }}</span>
       </label>
