@@ -19,6 +19,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import StandardQuestion from "./StandardQuestion.vue";
+import MultiSelect from "./MultiSelect.vue";
 import StartScreen from "./StartScreen.vue";
 import EndScreen from "./EndScreen.vue";
 import EmailPrompt from "./EmailPrompt.vue";
@@ -72,6 +73,7 @@ export default defineComponent({
   },
   components: {
     StandardQuestion,
+    MultiSelect,
     isCoreComponent,
     StartScreen,
     EndScreen,
