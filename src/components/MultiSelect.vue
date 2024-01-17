@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 const props = defineProps({
   quizData: Object,
 });
-const canSubmit = ref(false);
-const answer = ref("");
+const canSubmit = computed(() => answer.value.length > 0);
+const answer = ref([]);
 const onSubmit = () => console.log("submit");
 const isSelected = (index: number) => {
   return index === answer.value["index"];
@@ -25,11 +25,11 @@ const isSelected = (index: number) => {
         v-for="(option, index) in props.quizData?.options"
         :key="index"
         :for="option"
-        class="btn btn-outline btn-success flex justify-start gap-x-4 sm:min-w-full lg:min-w-0"
+        class="btn btn-outline btn-success flex justify-start gap-x-4 sm:min-w-full lg:min-w-44"
         :class="{ [`btn-active`]: isSelected(index) }"
       >
         <input
-          type="radio"
+          type="checkbox"
           class="radio radio-accent"
           :id="option"
           :value="{

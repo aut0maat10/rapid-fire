@@ -12,7 +12,7 @@
         v-for="(option, index) in quizData?.options"
         :key="index"
         :for="option"
-        class="btn btn-outline btn-success flex justify-start gap-x-4 sm:min-w-full lg:min-w-0"
+        class="btn btn-outline btn-success flex justify-start gap-x-4 sm:min-w-full lg:min-w-44"
         :class="{ [`btn-active`]: isSelected(index) }"
       >
         <input
