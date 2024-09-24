@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { Ref } from "vue";
-const props = defineProps(["quizData"]);
+const props = defineProps({
+  quizData: Object,
+});
 const emit = defineEmits(["submit"]);
 
 let answer: Ref<Answer> = ref({});
@@ -28,13 +30,13 @@ interface Answer {
     class="base-component flex flex-col flex-wrap justify-center content-center gap-y-4"
   >
     <h2 class="text-5xl font-bold text-slate-100 text-center">
-      {{ props.quizData.question }}
+      {{ props.quizData?.question }}
     </h2>
     <div
       class="options-wrapper flex flex-col flex-wrap justify-center content-center gap-y-4 my-8"
     >
       <label
-        v-for="(option, index) in props.quizData.options"
+        v-for="(option, index) in props.quizData?.options"
         :key="index"
         :for="option"
         class="btn btn-outline btn-success flex justify-start gap-x-4 sm:min-w-full lg:min-w-44"
@@ -47,7 +49,7 @@ interface Answer {
           :value="{
             option: option,
             index: index,
-            question: props.quizData.question,
+            question: props.quizData?.question,
           }"
           v-model="answer"
         />

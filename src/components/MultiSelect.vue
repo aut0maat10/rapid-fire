@@ -3,9 +3,10 @@ import { ref, computed } from "vue";
 const props = defineProps({
   quizData: Object,
 });
+const emit = defineEmits(["submit"]);
 const canSubmit = computed(() => answers.value.length > 0);
 const answers = ref([]);
-const onSubmit = () => console.log("submit");
+const onSubmit = () => emit("submit", answers);
 const isSelected = (index: number) => {
   return answers.value.some((answer) => answer["index"] === index);
 };
