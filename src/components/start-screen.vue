@@ -9,29 +9,21 @@
       </h2>
     </div>
     <button @click="startQuiz" class="btn btn-secondary mx-auto">
-      {{ startScreenData.buttontext }} &#8594;
+      {{ startScreenData.cta_text }} &#8594;
     </button>
   </main>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+// TODO: allow user to set bg-img in config file
 import backgroundImg from "@/assets/img/startscreen-bg.jpg";
 import { useQuizDataStore } from "@/stores/QuizData";
-
-export default defineComponent({
-  name: "StartScreen",
-  emits: ["quizStarted"],
-  setup(props, { emit }) {
-    const quizDataStore = useQuizDataStore();
-    const startScreenData = quizDataStore.quizData.startscreen;
-    const startQuiz = () => {
-      emit("quizStarted");
-    };
-
-    return { emit, startQuiz, backgroundImg, quizDataStore, startScreenData };
-  },
-});
+const quizDataStore = useQuizDataStore();
+const startScreenData = quizDataStore.quizData.startscreen;
+const startQuiz = () => {
+  emit("quizStarted");
+};
+const emit = defineEmits(["quizStarted"]);
 </script>
 
 <style scoped>
