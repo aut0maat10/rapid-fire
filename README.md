@@ -2,6 +2,8 @@
 
 ### `rapid-fire` is a quiz template for e-commerce landing pages and more.
 
+<img src="https://github.com/aut0maat10/rapid-fire/blob/main/src/assets/img/startscreen-bg.jpg" alt="drawing" width="750"/>
+
 The content is configured in a JSON file, and the data and quiz components are dynamically rendered. The template collects user name, email, and keeps track of user answers. The template offers the flexibility to set up the entire quiz flow by adding quiz data to the `json` configuration file, but it also enables you to set up your custom end screen complete with collected user data (email, quiz answers) which can then be used to calculate which product is right for the user, display a personalized message, redirect to your web store, and more.
 
 [See live demo here](https://d1tk1bfpsixa20.cloudfront.net/)
