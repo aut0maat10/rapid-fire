@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RapidFire from "./components/RapidFire.vue";
+import RapidFire from "./components/rapid-fire.vue";
 </script>
 
 <template>

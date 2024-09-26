@@ -7,12 +7,22 @@ type Question = {
   type: string;
 };
 type StartScreen = {
-  buttontext: string;
+  cta_text: string;
   introtext: string;
+  background_img: string;
+};
+
+type EndScreen = {
+  custom: boolean;
+  header: string;
+  text: string;
+  ctaurl: string;
+  cta_text: string;
 };
 interface QuizData {
   questions: Question[];
   startscreen: StartScreen;
+  endscreen: EndScreen;
   type: string;
 }
 

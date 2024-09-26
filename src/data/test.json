@@ -2,7 +2,15 @@
   "type": "rapid-fire-quiz",
   "startscreen": {
     "introtext": "Where should you travel next?",
-    "buttontext": "Take Quiz"
+    "cta_text": "Take Quiz",
+    "background_img": "startscreen-bg.jpg"
+  },
+  "endscreen": {
+    "custom": true,
+    "header": "Nice to meet you, fellow traveler!",
+    "text": "You will be redirected to your personal offer in 10 seconds.",
+    "ctaurl": "https://www.google.com/search?q=nyc",
+    "cta_text": "See your offer"
   },
   "questions": [
     {
@@ -19,6 +27,16 @@
       "type": "standard-question",
       "question": "Which activity would you like to try?",
       "options": ["Hiking", "Barhopping", "Shopping"]
+    },
+    {
+      "type": "multi-select",
+      "question": "I am a (select all that apply):",
+      "options": [
+        "Adventure seeker",
+        "Luxury traveler",
+        "Budget conscious",
+        "Solo explorer"
+      ]
     }
   ]
 }
